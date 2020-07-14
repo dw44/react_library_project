@@ -6,10 +6,12 @@
     align-items: center;
     justify-content: space-evenly;
     padding: 0 10px;
+    z-index: 1;
 }
 
 .Title {
     font-size: 1.777em;
+    color: #cfc;
 }
 
 .AddBook {
