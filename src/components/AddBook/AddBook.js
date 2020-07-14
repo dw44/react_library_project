@@ -4,10 +4,10 @@ import classes from './AddBook.module.css';
 function AddBook() {
   const book = {
     id: Math.floor(Math.random() * 9999),
-    title: '',
-    author: '',
-    pages: 0,
-    read: false
+    title: null,
+    author: null,
+    pages: null,
+    read: null
   }
 
   const changeHandler = event => {
@@ -18,8 +18,20 @@ function AddBook() {
 
   }
 
+  const resetBook = () => {
+    Object.keys(book).forEach(key => {
+      if (key === 'id') {
+        book[key] = Math.floor(Math.random() * 9999);
+      } else {
+        book[key] = null;
+      }
+    })
+  }
+
   const formHandler = event => {
     event.preventDefault();
+    console.log(book);
+    resetBook();
     console.log(book);
   }
 
@@ -29,10 +41,12 @@ function AddBook() {
         <input type="text" name="title" id="title" placeholder="Title" onChange={changeHandler} required />
         <input type="text" name="author" id="author" placeholder="Author" onChange={changeHandler} required />
         <input type="number" min="1" name="pages" id="pages" placeholder="Pages" onChange={changeHandler} required />
-        <select name="read-book" id="read-book" onChange={changeHandler}>
+        <input type="radio" id="yes" name="read" value={true} onChange={changeHandler}/>
+        <input type="radio" id="no" name="read" value={false} onChange={changeHandler}/>
+        {/* <select name="read" id="read-book" onChange={changeHandler}>
           <option value={true}>Yes</option>
           <option value={false}>No</option>
-        </select>
+        </select> */}
         <button onClick={formHandler}>Add Book</button>
       </form>
     </div>
