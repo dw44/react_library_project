@@ -2,11 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import classes from './Book.module.css';
 
-let n = 1;
 
 function Book(props) {
-  const [readStatus, setReadStatus] = useState(false);
-  const [otherState, setOtherState] = useState([]);
+  const [readStatus, setReadStatus] = useState(props.read);
 
   return (
     <div className={classes.BookCard}>

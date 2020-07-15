@@ -28,26 +28,35 @@ function AddBook() {
     })
   }
 
+  const validate = () => {
+    if (Object.keys(book).some(key => book[key] === null)) {
+      return false;
+    }
+    return true;
+  }
+
   const formHandler = event => {
-    event.preventDefault();
-    console.log(book);
-    resetBook();
-    console.log(book);
+    if (validate()) {
+      event.preventDefault();
+      console.log(book);
+      resetBook();
+      console.log(book);
+    } else {
+      console.log(event.target.children);
+      event.preventDefault();
+      resetBook();
+    }    
   }
 
   return (
     <div className={classes.FormContainer}>
-      <form className={classes.Form}>
+      <form className={classes.Form} onSubmit={formHandler}>
         <input type="text" name="title" id="title" placeholder="Title" onChange={changeHandler} required />
         <input type="text" name="author" id="author" placeholder="Author" onChange={changeHandler} required />
         <input type="number" min="1" name="pages" id="pages" placeholder="Pages" onChange={changeHandler} required />
         <input type="radio" id="yes" name="read" value={true} onChange={changeHandler}/>
         <input type="radio" id="no" name="read" value={false} onChange={changeHandler}/>
-        {/* <select name="read" id="read-book" onChange={changeHandler}>
-          <option value={true}>Yes</option>
-          <option value={false}>No</option>
-        </select> */}
-        <button onClick={formHandler}>Add Book</button>
+        <button>Add Book</button>
       </form>
     </div>
   )
