@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addBook } from '../../redux/actionCreators';
 import classes from './AddBook.module.css';
 
 class AddBook extends Component {
   state = {
+    id: Math.floor(Math.random() * 9999),
     title: '',
     author: '',
     pages: 1,
     read: false
   }
 
-
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    //console.log(this.state);
+    this.props.add({...this.state});
     this.setState({
+      id: Math.floor(Math.random() * 9999),
       title: '',
       author: '',
       pages: 1,
@@ -79,4 +83,16 @@ class AddBook extends Component {
   }
 }
 
-export default AddBook;
+const mapStateToProps = state => {
+  return {
+    books: state 
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    add: book => dispatch(addBook(book))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddBook);
