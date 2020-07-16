@@ -1,65 +1,90 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './AddBook.module.css';
 
-function AddBook() {
-  const book = {
-    id: Math.floor(Math.random() * 9999),
-    title: null,
-    author: null,
-    pages: null,
-    read: null
+class AddBook extends Component {
+  state = {
+    title: '',
+    author: '',
+    pages: 1,
+    read: false
   }
 
-  const changeHandler = event => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-    book[[name]] = value;
+  radioChecked = false;
 
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.state);
+    this.setState({
+      title: '',
+      author: '',
+      pages: 1,
+      read: false
+    });
+    this.radioChecked = false;
   }
 
-  const resetBook = () => {
-    Object.keys(book).forEach(key => {
-      if (key === 'id') {
-        book[key] = Math.floor(Math.random() * 9999);
-      } else {
-        book[key] = null;
-      }
-    })
-  }
-
-  const validate = () => {
-    if (Object.keys(book).some(key => book[key] === null)) {
-      return false;
-    }
-    return true;
-  }
-
-  const formHandler = event => {
-    if (validate()) {
-      event.preventDefault();
-      console.log(book);
-      resetBook();
-      console.log(book);
-    } else {
-      console.log(event.target.children);
-      event.preventDefault();
-      resetBook();
-    }    
-  }
-
-  return (
-    <div className={classes.FormContainer}>
-      <form className={classes.Form} onSubmit={formHandler}>
-        <input type="text" name="title" id="title" placeholder="Title" onChange={changeHandler} required />
-        <input type="text" name="author" id="author" placeholder="Author" onChange={changeHandler} required />
-        <input type="number" min="1" name="pages" id="pages" placeholder="Pages" onChange={changeHandler} required />
-        <input type="radio" id="yes" name="read" value={true} onChange={changeHandler}/>
-        <input type="radio" id="no" name="read" value={false} onChange={changeHandler}/>
-        <button>Add Book</button>
+  render() {
+    return (
+      <form className={classes.Form} onSubmit={this.handleSubmit}>
+        <div className={classes.FormElement}>
+          <label htmlFor="title">Title</label>
+          <input 
+            type="text" 
+            id="title" 
+            onChange={e => this.setState({title: e.target.value})} 
+            value={this.state.title} 
+            required/>
+        </div>
+        <div className={classes.FormElement}>
+          <label htmlFor="author">Author</label>
+          <input 
+            type="text" 
+            id="author" 
+            onChange={e => this.setState({author: e.target.value})} 
+            value={this.state.author} 
+            required/>
+        </div>
+        <div className={classes.FormElement}>
+          <label htmlFor="pages">Title</label>
+          <input 
+            type="number" 
+            id="pages" 
+            min="1" 
+            onChange={e => this.setState({pages: e.target.value})} 
+            value={this.state.pages} 
+            required/>
+        </div>
+        <div className={classes.Radio}>
+            <p>Read?</p>
+            <label htmlFor="yes">Yes</label>
+            <input 
+              type="radio" 
+              name="read" 
+              id="yes" 
+              value={true} 
+              onChange={e => {
+                this.setState({read: e.target.value})
+                this.radioChecked = true;
+              }}
+              checked={this.radioChecked}
+              required/>
+            <label htmlFor="no">No</label>
+            <input 
+              type="radio" 
+              name="read" 
+              id="no" 
+              value={false}
+              onChange={e => {
+                this.setState({read: e.target.value})
+                this.radioChecked = true;
+              }}
+              checked={this.radioChecked}
+              required/>
+        </div>
+        <input type="submit" value="Submit"/>
       </form>
-    </div>
-  )
+    );
+  }
 }
 
 export default AddBook;

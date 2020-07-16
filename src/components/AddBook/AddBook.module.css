@@ -1,15 +1,18 @@
-.FormContainer {
-    width: 100vw;
-    min-width: 360px;
-    height: 100vh;
-    min-height: 640px;
-    background-color: rgba(0, 0, 10, 0.2);
-    z-index: 222;
+.Form {
+    border: 2px solid #000;
+    width: 350px;
+    margin: 25px auto;
+    padding: 10px;
 }
 
-.Form {
-    width: 30%;
-    margin: 0 auto;
+.FormElement {
+    border: 1px solid #004;
+    margin-bottom: 10px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.Radio {
+    margin-bottom: 15px;
 }
