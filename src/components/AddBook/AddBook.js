@@ -9,7 +9,6 @@ class AddBook extends Component {
     read: false
   }
 
-  radioChecked = false;
 
   handleSubmit = e => {
     e.preventDefault();
@@ -20,7 +19,8 @@ class AddBook extends Component {
       pages: 1,
       read: false
     });
-    this.radioChecked = false;
+    document.querySelector('#yes').checked = false;
+    document.querySelector('#no').checked = false;
   }
 
   render() {
@@ -62,11 +62,7 @@ class AddBook extends Component {
               name="read" 
               id="yes" 
               value={true} 
-              onChange={e => {
-                this.setState({read: e.target.value})
-                this.radioChecked = true;
-              }}
-              checked={this.radioChecked}
+              onChange={e => this.setState({read: e.target.value})}
               required/>
             <label htmlFor="no">No</label>
             <input 
@@ -74,11 +70,7 @@ class AddBook extends Component {
               name="read" 
               id="no" 
               value={false}
-              onChange={e => {
-                this.setState({read: e.target.value})
-                this.radioChecked = true;
-              }}
-              checked={this.radioChecked}
+              onChange={e => this.setState({read: e.target.value})}
               required/>
         </div>
         <input type="submit" value="Submit"/>
