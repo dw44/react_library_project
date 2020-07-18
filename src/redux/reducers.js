@@ -1,35 +1,34 @@
 /* eslint-disable no-fallthrough */
 import * as types from './types';
 
-export const initialState = [
-  {
-    id: 1234,
-    title: 'Harry Potter',
-    author: 'JKR',
-    pages: 260,
-    read: true
-  },
-  {
-    id: 5678,
-    title: 'Fellowship of the Ring',
-    author: 'JRRT',
-    pages: 500,
-    read: false,
-  }
-];
+export const initialState = (localStorage.length > 0) ? [...JSON.parse(localStorage.library)] : [];
 
-const addHandler = (state, action) => { 
-  // TODO
-  return [...state, action.payload];
+const updateLocalStorage = library => {
+  localStorage.clear();
+  localStorage.setItem('library', JSON.stringify(library));
+}
+
+const addHandler = (state, action) => {
+  const updatedState = [...state, action.payload]; 
+  updateLocalStorage(updatedState);
+  return updatedState;
 }
 
 const removeHandler = (state, action) => {
-  console.log(action);
-  return state.filter(book => book.id !== action.payload);
+  const updatedState = state.filter(book => book.id !== action.payload); 
+  updateLocalStorage(updatedState);
+  return updatedState;
 }
 
 const editReadStatusHandler = (state, action) => {
-  
+  const updatedState = [...state];
+  updatedState.forEach(book => {
+    if (book.id === action.payload) {
+      book.read = !book.read;
+    }
+  });
+  updateLocalStorage(updatedState);
+  return updatedState;
 }
 
 export const rootReducer = (state = initialState, action) => {

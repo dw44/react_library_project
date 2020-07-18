@@ -5,11 +5,24 @@ import AddBook from './components/AddBook/AddBook';
 import './App.css';
 
 class App extends Component {
+  state = {
+    showForm: false
+  }
+
+  toggleFormDisplay() {
+    this.setState({
+      showForm: !this.state.showForm
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Header showForm={this.switchDisplay} />
-        <AddBook />
+        <Header 
+          toggleForm={() => this.toggleFormDisplay()}
+          formVisible={this.state.showForm}  
+        />
+        {this.state.showForm ? <AddBook hideForm={this.toggleFormDisplay.bind(this)} /> : null}
         <Books />
       </div>
     );

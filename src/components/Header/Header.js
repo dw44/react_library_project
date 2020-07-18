@@ -7,8 +7,8 @@ function Header(props) {
       <h1 className={classes.Title}>The Odin Library</h1>
       <button 
         className={classes.AddBook}
-        onClick={props.showForm}
-      >Add Book</button>
+        onClick={props.toggleForm}
+      >{props.formVisible ? 'Hide Form' : 'Add Book'}</button>
     </header>
   );
 }

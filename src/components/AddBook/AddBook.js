@@ -25,6 +25,7 @@ class AddBook extends Component {
     });
     document.querySelector('#yes').checked = false;
     document.querySelector('#no').checked = false;
+    this.props.hideForm();
   }
 
   render() {
