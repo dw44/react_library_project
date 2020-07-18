@@ -1,33 +1,20 @@
-import { render } from '@testing-library/react';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { changeRead, removeBook } from '../../redux/actionCreators';
 import classes from './Book.module.css';
 
 
-class Book extends Component {
-  state = {
-    read: this.props.read
-  }
-
-  changeReadStatus = () => {
-    this.setState({
-      read: !this.state.read
-    })
-  }
-
-  render() {
-    return (
-      <div className={classes.BookCard}>
-        <p>Title: {this.props.title}</p>
-        <p>Author: {this.props.author}</p>
-        <p>Pages: {this.props.pages}</p>
-        <p>Read: {this.state.read ? "Yes" : "No"}</p>
-        <button onClick={() => {}} className="book-card-button">Delete Book</button>
-        <button className="book-card-button"
-          onClick={() => this.changeReadStatus}
-        >Change Read Status</button>
-      </div>
-    );
-  }
+function Book(props) {
+  return (
+    <div className={classes.BookCard}>
+      <p>Title: {props.title}</p>
+      <p>Author: {props.author}</p>
+      <p>Pages: {props.pages}</p>
+      <p>Read: {props.read ? 'Yes' : 'No'}</p>
+      <button onClick={props.remove}>Delete</button>
+      <button>Change Read Status</button>
+    </div>
+  );
 }
 
 export default Book;

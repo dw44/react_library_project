@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { v4 as uuid } from 'uuid';
 import { connect } from 'react-redux';
 import { addBook } from '../../redux/actionCreators';
 import classes from './AddBook.module.css';
 
 class AddBook extends Component {
   state = {
-    id: Math.floor(Math.random() * 9999),
+    id: uuid(),
     title: '',
     author: '',
     pages: 1,
@@ -14,9 +15,9 @@ class AddBook extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.add({...this.state});
+    this.props.add(this.state);
     this.setState({
-      id: Math.floor(Math.random() * 9999),
+      id: uuid(),
       title: '',
       author: '',
       pages: 1,
@@ -65,7 +66,7 @@ class AddBook extends Component {
               name="read" 
               id="yes" 
               value={true} 
-              onChange={e => this.setState({read: e.target.value})}
+              onChange={e => this.setState({read: Boolean(e.target.value)})}
               required/>
             <label htmlFor="no">No</label>
             <input 
@@ -73,18 +74,12 @@ class AddBook extends Component {
               name="read" 
               id="no" 
               value={false}
-              onChange={e => this.setState({read: e.target.value})}
+              onChange={e => this.setState({read: Boolean(e.target.value)})}
               required/>
         </div>
         <input type="submit" value="Submit"/>
       </form>
     );
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    books: state 
   }
 }
 
@@ -94,4 +89,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddBook);
+export default connect(null, mapDispatchToProps)(AddBook);

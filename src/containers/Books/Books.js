@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { removeBook, changeRead } from '../../redux/actionCreators';
 import Book from '../Book/Book';
 import classes from './Books.module.css';
 
 class Books extends Component {
-  state = {
-    total: this.props.books.length
-  }
-
   render() {
+    const books = this.props.books.map(book => (
+      <Book
+        key={book.id}
+        id={book.id}
+        title={book.title}
+        author={book.author}
+        pages={book.pages}
+        read={book.read}
+        changeRead={() => this.props.changeStatus(book.id)}
+        remove={() => this.props.deleteBook(book.id)}
+      />
+    ));
     return (
       <div className={classes.Books}>
-        {this.props.books.map(book => 
-          <Book 
-            key={book.id}
-            id={book.id}
-            title={book.title}
-            author={book.author}
-            pages={book.pages}
-            read={book.read === 'true' ? true : false}
-          />  
-        )}
+        {books}
       </div>
     );
   }
@@ -28,9 +28,15 @@ class Books extends Component {
 
 const mapStateToProps = state => {
   return {
-    books: [...state],
-    total: state.length
+    books: state,
   };
 }
 
-export default connect(mapStateToProps)(Books);
+const mapDispatchToProps = dispatch => {
+  return {
+    changeStatus: id => dispatch(changeRead(id)),
+    deleteBook: id => dispatch(removeBook(id))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Books);
