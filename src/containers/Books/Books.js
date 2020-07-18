@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { removeBook, changeRead } from '../../redux/actionCreators';
-import Book from '../Book/Book';
+import Book from '../../components/Book/Book';
 import classes from './Books.module.css';
 
 class Books extends Component {

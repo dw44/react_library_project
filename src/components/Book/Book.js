@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { changeRead, removeBook } from '../../redux/actionCreators';
+import React from 'react';
 import classes from './Book.module.css';
 
 
-function Book(props) {
+const Book = props => {
   return (
     <div className={classes.BookCard}>
       <p>Title: {props.title}</p>
