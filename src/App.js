@@ -9,8 +9,8 @@ class App extends Component {
   }
 
   toggleFormDisplay() {
-    this.setState({
-      showForm: !this.state.showForm
+    this.setState(prevState => {
+      return {showForm: !prevState.showForm}
     });
   }
 

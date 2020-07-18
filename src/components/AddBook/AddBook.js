@@ -76,6 +76,7 @@ class AddBook extends Component {
               id="no" 
               value={false}
               onChange={e => this.setState({read: Boolean(e.target.value)})}
+              checked
               required/>
         </div>
         <input type="submit" value="Submit"/>
