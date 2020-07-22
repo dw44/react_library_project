@@ -1,29 +1,41 @@
 .Header {
     width: 100%;
+    min-width: 360px;
     height: 60px;
-    background-color: #44f;
+    background-color: #000;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 0 10px;
-    z-index: 1;
 }
 
+
 .Title {
-    font-size: 1.777em;
-    color: #cfc;
+    font-size: 1.75em;
+    color: #fcba03;
 }
 
 .AddBook {
-    font-weight: 600;
+    font-size: 1.1em;
+    font-weight: 700;
     border: none;
-    background-color: #ffcc6e;
-    height: 30px;
-    border-radius: 5px;
+    background-color: #f00;
+    color: #fff;
+    height: 40px;
+    border-radius: 6px;
     cursor: pointer;
 }
 
 .AddBook:hover,
 .AddBook:focus {
-    background-color: #ffa600;
+    background-color: #9e0000;
+}
+
+@media (min-width: 768px) {
+    .Header {
+        justify-content: space-evenly;
+    }
+    .Title {
+        font-size: 3em;
+    }
 }
