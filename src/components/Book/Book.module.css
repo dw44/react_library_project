@@ -17,15 +17,20 @@
 
 .Button {
     margin: 0 10px;
-    width: 160px;
+    width: 180px;
     height: 40px;
     font-family: 'Josefin Sans', sans-serif;
     border: none;
     border-radius: 10px;
-    font-size: 0.925em;
+    font-weight: 700;
+    font-size: 1em;
     cursor: pointer;
     background-color: #0008ff;
     color: #eee;
+}
+
+.Button:nth-of-type(1) {
+    width: 100px;
 }
 
 .Button:focus,
