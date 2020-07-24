@@ -1,6 +1,33 @@
 .BookCard {
-    border: 1px solid #000;
-    margin: 5px auto;
+    margin: 10px auto;
+    background-image: linear-gradient(to right bottom, #9191fd, #00b1ff, #00caff, #00ddf3, #12ebcf);
     padding: 5px;
-    width: 95%;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.BookAttribute {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.by {
+    font-size: 0.6667em;
+}
+
+.Button {
+    margin: 0 10px;
+    width: 160px;
+    height: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.925em;
+    cursor: pointer;
+    background-color: #8779db;
+}
+
+.Button:focus,
+.Button:hover {
+    background-color: #c2b8ff;    
 }

@@ -1,41 +1,46 @@
 .Header {
     width: 100%;
-    min-width: 360px;
-    height: 60px;
+    min-height: 140px;
     background-color: #000;
     display: flex;
+    flex-flow: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
+    justify-content: space-evenly;
 }
 
+.Header > * {
+    font-family: 'Limelight', cursive;
+    margin: 0;
+    padding: 0;
+}
 
 .Title {
-    font-size: 1.75em;
-    color: #fcba03;
+    font-size: 2.2em;
+    color: #e30f00;
 }
 
 .AddBook {
-    font-size: 1.1em;
-    font-weight: 700;
+    width: 150px;
+    height: 50px;
+    font-size: 1.3em;
     border: none;
-    background-color: #f00;
-    color: #fff;
-    height: 40px;
-    border-radius: 6px;
+    border-radius: 10px;
+    background-color: #e30f00;
+    color: #000;
     cursor: pointer;
 }
 
-.AddBook:hover,
-.AddBook:focus {
-    background-color: #9e0000;
+.AddBook:focus,
+.AddBook:hover {
+    background-color: #f54e42;
 }
 
 @media (min-width: 768px) {
     .Header {
-        justify-content: space-evenly;
+        flex-flow: row;
     }
+
     .Title {
-        font-size: 3em;
+        font-size: 3.2em;
     }
 }

@@ -32,25 +32,27 @@ class AddBook extends Component {
     return (
       <form className={classes.Form} onSubmit={this.handleSubmit}>
         <div className={classes.FormElement}>
-          <label htmlFor="title">Title</label>
+          <label className={classes.Label} htmlFor="title">Title</label>
           <input 
             type="text" 
             id="title" 
+            placeholder="Title"
             onChange={e => this.setState({title: e.target.value})} 
             value={this.state.title} 
             required/>
         </div>
         <div className={classes.FormElement}>
-          <label htmlFor="author">Author</label>
+          <label className={classes.Label} htmlFor="author">Author</label>
           <input 
             type="text" 
             id="author" 
+            placeholder="Author"
             onChange={e => this.setState({author: e.target.value})} 
             value={this.state.author} 
             required/>
         </div>
         <div className={classes.FormElement}>
-          <label htmlFor="pages">Title</label>
+          <label className={classes.Label} htmlFor="pages">Pages</label>
           <input 
             type="number" 
             id="pages" 
@@ -60,8 +62,8 @@ class AddBook extends Component {
             required/>
         </div>
         <div className={classes.Radio}>
-            <p>Read?</p>
-            <label htmlFor="yes">Yes</label>
+            <p className={classes.Label}>Read?</p>
+            <label className={classes.Label} htmlFor="yes">Yes</label>
             <input 
               type="radio" 
               name="read" 
@@ -69,7 +71,7 @@ class AddBook extends Component {
               value={true} 
               onChange={e => this.setState({read: Boolean(e.target.value)})}
               required/>
-            <label htmlFor="no">No</label>
+            <label className={classes.Label} htmlFor="no">No</label>
             <input 
               type="radio" 
               name="read" 
@@ -79,7 +81,7 @@ class AddBook extends Component {
               checked
               required/>
         </div>
-        <input type="submit" value="Submit"/>
+        <input className={classes.Submit} type="submit" value="Submit"/>
       </form>
     );
   }
