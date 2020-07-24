@@ -1,7 +1,7 @@
 /* eslint-disable no-fallthrough */
 import * as types from './types';
 
-export const initialState = (localStorage.length > 0) ? [...JSON.parse(localStorage.library)] : [
+export const initialState = (localStorage.length > 0 || localStorage.library === '') ? [...JSON.parse(localStorage.library)] : [
   {id: 'c482f0f3-7a84-4c4d-bd60-feb7c9908351', title: 'Eloquent JavaScript',
     author: 'Marijn Haverbeke', pages: 448, read: true},
   {id: '71f6dc97-ae31-4140-a4f0-1068d180a018', title: 'CODE', 

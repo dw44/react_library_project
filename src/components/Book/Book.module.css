@@ -24,10 +24,11 @@
     border-radius: 10px;
     font-size: 0.925em;
     cursor: pointer;
-    background-color: #8779db;
+    background-color: #0008ff;
+    color: #eee;
 }
 
 .Button:focus,
 .Button:hover {
-    background-color: #c2b8ff;    
+    background-color: #5e63ff;    
 }
