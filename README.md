@@ -1,6 +1,5 @@
 Part of "The Odin Project" curriculum.
 
-Project specification: https://www.theodinproject.com/courses/javascript/lessons/frameworks
 
 A redo of a previous project, utilizing React instead of the original's vanilla JavaScript, HTML, and CSS. Includes functionality to Add books to the library, remove them, and edit their read status. All book data and it's manipulation is handled through "Redux". 
 
